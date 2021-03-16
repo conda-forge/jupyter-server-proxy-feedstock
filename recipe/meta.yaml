@@ -21,6 +21,7 @@ requirements:
     - python >=3
     - pip
     - setuptools
+    - jupyter-packaging
   run:
     - python >=3
     - jupyter_server >=1
