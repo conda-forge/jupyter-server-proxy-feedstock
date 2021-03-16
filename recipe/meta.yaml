@@ -21,7 +21,7 @@ requirements:
     - setuptools
   run:
     - python >=3
-    - notebook
+    - jupyter_server >=1
     - simpervisor >=0.2
     - aiohttp
 
