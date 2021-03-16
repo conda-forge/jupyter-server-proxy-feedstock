@@ -1,5 +1,6 @@
 {% set organization = "jupyterhub" %}
 {% set name = "jupyter-server-proxy" %}
+{% set pypi_name = name|replace("-", "_") %}
 {% set version = "3.0.0" %}
 
 package:
@@ -7,8 +8,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ organization }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 84c01f53048beb6116655821099ba528437bd709a1c21d6d7d39761fb7fd92c4
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ pypi_name }}-{{ version }}.tar.gz
+  sha256: 2fc74e099765a7a8a32988610efbf9e4416a366b52215feaa22363ed8ea0fac0
 
 build:
   number: 0
