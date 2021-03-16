@@ -1,5 +1,5 @@
 {% set name = "jupyter-server-proxy" %}
-{% set version = "1.6.0" %}
+{% set version = "3.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5e08d66a262b069122c029102f6db8e307e9d0fafa05d95aab1ab7ea2df7b169
+  sha256: 970494e95ad7e5ff6766871ac34378f4dddef3161818e55b52e3607ef691f46d
 
 build:
   number: 0
@@ -19,9 +19,10 @@ requirements:
     - python >=3
     - pip
     - setuptools
+    - jupyter-packaging
   run:
     - python >=3
-    - notebook
+    - jupyter_server >=1
     - simpervisor >=0.2
     - aiohttp
 
