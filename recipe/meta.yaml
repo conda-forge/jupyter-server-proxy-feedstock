@@ -1,4 +1,3 @@
-{% set organization = "jupyterhub" %}
 {% set name = "jupyter-server-proxy" %}
 {% set pypi_name = name|replace("-", "_") %}
 {% set version = "3.0.0" %}
