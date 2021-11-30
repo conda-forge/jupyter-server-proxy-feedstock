@@ -52,7 +52,7 @@ about:
   license: BSD-3-Clause
   license_file:
     - LICENSE
-    - jupyter_server_proxy/labextensions/static/third-party-licenses.json
+    - jupyter_server_proxy/labextension/static/third-party-licenses.json
   summary: Jupyter server extension to supervise and proxy web services
   description: |
     Jupyter Server Proxy lets you run arbitrary external processes (such as
