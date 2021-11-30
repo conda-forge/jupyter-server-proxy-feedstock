@@ -1,12 +1,11 @@
-{% set name = "jupyter-server-proxy" %}
-{% set version = "3.1.0" %}
+{% set version = "3.2.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: jupyter-server-proxy
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter-server-proxy-{{ version }}.tar.gz
   sha256: 30d57976090980f4380cb0a80e8e829dfd74d0a19edb64329239def9feefcde4
 
 build:
@@ -20,17 +19,28 @@ requirements:
     - pip
     - setuptools
     - jupyter-packaging
+    - jupyterlab >=3.0,<4
   run:
     - python >=3
     - jupyter_server >=1
-    - simpervisor >=0.2
+    - simpervisor >=0.4
     - aiohttp
 
 test:
   requires:
     - pip
+    - m2-grep  # [win]
   commands:
     - pip check
+    - jupyter labextension list
+    - jupyter server extension list
+    - jupyter serverextension list
+    - jupyter server extension list 1>server_extensions 2>&1
+    - cat server_extensions | grep -ie "jupyter_server_proxy.*{{ version.replace(".", "\\.") }}.*OK"
+    - jupyter serverextension list 1>serverextensions 2>&1
+    - cat serverextensions | grep -ie "jupyter_server_proxy.*{{ version.replace(".", "\\.") }}.*OK"
+    - jupyter labextension list 1>labextensions 2>&1
+    - cat serverextensions | grep -ie "@jupyterlab/server-proxy.*{{ version.replace(".", "\\.") }}.*OK"
   imports:
     - jupyter_server_proxy
 
@@ -54,3 +64,4 @@ extra:
     - ocefpaf
     - xhochy
     - consideratio
+    - bollwyvl
