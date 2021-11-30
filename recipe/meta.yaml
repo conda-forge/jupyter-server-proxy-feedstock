@@ -6,41 +6,44 @@ package:
 
 source:
   url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter-server-proxy-{{ version }}.tar.gz
-  sha256: 30d57976090980f4380cb0a80e8e829dfd74d0a19edb64329239def9feefcde4
+  sha256: 816262f5711432dd79cbbd81e427cc2b592f522b0fae54368ed6e9d943384327
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install --no-deps -vv --install-option="--skip-npm" .
 
 requirements:
   host:
-    - python >=3
-    - pip
-    - setuptools
-    - jupyter-packaging
+    - jupyter-packaging >=0.7,<0.8
     - jupyterlab >=3.0,<4
+    - pip
+    - python >=3.6
+    - setuptools
   run:
-    - python >=3
-    - jupyter_server >=1
-    - simpervisor >=0.4
     - aiohttp
+    - jupyter_server >=1
+    - python >=3.6
+    - simpervisor >=0.4
 
 test:
   requires:
-    - pip
+    - jupyterlab >=3.0,<4
     - m2-grep  # [win]
+    - pip
   commands:
     - pip check
+    # print everything
     - jupyter labextension list
     - jupyter server extension list
     - jupyter serverextension list
+    # validate each
     - jupyter server extension list 1>server_extensions 2>&1
-    - cat server_extensions | grep -ie "jupyter_server_proxy.*{{ version.replace(".", "\\.") }}.*OK"
+    - cat server_extensions | grep -ie "jupyter_server_proxy.*OK"
     - jupyter serverextension list 1>serverextensions 2>&1
-    - cat serverextensions | grep -ie "jupyter_server_proxy.*{{ version.replace(".", "\\.") }}.*OK"
+    - cat serverextensions | grep -ie "jupyter_server_proxy.*OK"
     - jupyter labextension list 1>labextensions 2>&1
-    - cat serverextensions | grep -ie "@jupyterlab/server-proxy.*{{ version.replace(".", "\\.") }}.*OK"
+    - cat labextensions | grep -ie "@jupyterlab/server-proxy.*{{ version.replace(".", "\\.") }}.*OK"
   imports:
     - jupyter_server_proxy
 
