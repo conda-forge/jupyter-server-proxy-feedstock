@@ -1,4 +1,4 @@
-{% set version = "3.2.0" %}
+{% set version = "3.2.1" %}
 
 package:
   name: jupyter-server-proxy
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter-server-proxy-{{ version }}.tar.gz
-  sha256: 816262f5711432dd79cbbd81e427cc2b592f522b0fae54368ed6e9d943384327
+  sha256: 080e9910592d06422bdd93dfc1fa8350c6fdaec9fbbd050630e90f7a5593a4f7
 
 build:
   number: 0
