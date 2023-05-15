@@ -1,11 +1,11 @@
-About jupyter-server-proxy
-==========================
+About jupyter-server-proxy-feedstock
+====================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/jupyter-server-proxy-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/jupyterhub/jupyter-server-proxy
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/jupyter-server-proxy-feedstock/blob/main/LICENSE.txt)
 
 Summary: Jupyter server extension to supervise and proxy web services
 
