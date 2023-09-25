@@ -18,15 +18,15 @@ requirements:
     - hatch-jupyter-builder >=0.5
     - hatch-nodejs-version
     - hatchling >=1.4.0
-    - jupyterlab >=3.4.7,<4.0.0
+    - jupyterlab >=4.0.6,<5.0.0a0
     - pip
     - python >=3.8
   run:
     - aiohttp
-    - importlib-metadata
-    - jupyter_server >=1
+    - importlib-metadata >4.8.3
+    - jupyter_server >=1.0
     - python >=3.8
-    - simpervisor >=0.4
+    - simpervisor >=1.0
 
 test:
   requires:
@@ -39,16 +39,13 @@ test:
     - pip list
     - jupyter labextension list
     - jupyter server extension list
-    - jupyter serverextension list
     # output each
     - pip list 1>pip_list 2>&1
     - jupyter server extension list 1>server_extensions 2>&1
-    - jupyter serverextension list 1>serverextensions 2>&1
     - jupyter labextension list 1>labextensions 2>&1
     # check each
     - grep -iE "jupyter_server_proxy\s*{{ version.replace(".", "\\.") }}"                 pip_list
     - grep -iE "jupyter_server_proxy.*OK"                                                 server_extensions
-    - grep -iE "jupyter_server_proxy.*OK"                                                 serverextensions
     - grep -iE "@jupyterhub/jupyter-server-proxy.*{{ version.replace(".", "\\.") }}.*OK"  labextensions
   imports:
     - jupyter_server_proxy
