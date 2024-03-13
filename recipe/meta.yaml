@@ -22,7 +22,9 @@ requirements:
     - python >=3.8
   run:
     - aiohttp
-    - importlib_metadata >=4.8.3; python_version<"3.10"
+    # importlib_metadata is only really needed with Python <3.10, but we've
+    # failed to specify it to only be required then
+    - importlib_metadata >=4.8.3
     - jupyter_server >=1.0
     - simpervisor >=1.0
     - tornado >=5.1
