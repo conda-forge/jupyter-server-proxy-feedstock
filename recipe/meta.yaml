@@ -1,4 +1,4 @@
-{% set version = "4.1.0" %}
+{% set version = "4.1.1" %}
 
 package:
   name: jupyter-server-proxy
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter_server_proxy-{{ version }}.tar.gz
-  sha256: 2cfac3b4232fe7144e8e60296b4f861708b4f13b29260a2cf28976bf8e617f70
+  sha256: b9c6a945b10fa5373c1caa3f6481ce334b1bbe8946b48c8cb9f97097e26a8512
 
 build:
   number: 0
@@ -15,22 +15,25 @@ build:
 
 requirements:
   host:
-    - hatch-jupyter-builder >=0.5
-    - hatch-nodejs-version
-    - hatchling >=1.4.0
+    - hatch-jupyter-builder >=0.8.3
+    - hatchling >=1.18.0
     - jupyterlab >=4.0.6,<5.0.0a0
     - pip
     - python >=3.8
   run:
     - aiohttp
-    - importlib-metadata >4.8.3
+    # importlib_metadata is only really needed with Python <3.10, but we've
+    # failed to specify it to only be required then
+    - importlib_metadata >=4.8.3
     - jupyter_server >=1.0
-    - python >=3.8
     - simpervisor >=1.0
+    - tornado >=5.1
+    - traitlets >=4.2.1
+    - python >=3.8
 
 test:
   requires:
-    - jupyterlab >=3.0,<4
+    - jupyterlab >=4.0.6,<5.0.0a0
     - m2-grep  # [win]
     - pip
   commands:
