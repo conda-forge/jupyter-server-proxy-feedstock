@@ -27,6 +27,8 @@ requirements:
     - jupyter_server >=1.0
     - python >=3.8
     - simpervisor >=1.0
+    - tornado >=5.1
+    - traitlets >=4.2.1
 
 test:
   requires:
