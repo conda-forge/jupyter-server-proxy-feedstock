@@ -1,4 +1,4 @@
-{% set version = "3.2.2" %}
+{% set version = "3.2.3" %}
 
 package:
   name: jupyter-server-proxy
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter-server-proxy-{{ version }}.tar.gz
-  sha256: 54690ea9467035d187c930c599e76065017baf16e118e6eebae0d3a008c4d946
+  sha256: 8ef97d682cdef2c1ae5afece446e471d4614859c13d9ceb51601801594c37fee
 
 build:
   number: 0
@@ -15,11 +15,12 @@ build:
 
 requirements:
   host:
-    - jupyter-packaging >=0.7,<0.8
+    - jupyter-packaging >=0.7.9,<0.8
     - jupyterlab >=3.0,<4
+    - setuptools >=40.8.0
+    - wheel
     - pip
     - python >=3.6
-    - setuptools
   run:
     - aiohttp
     - jupyter_server >=1
