@@ -19,7 +19,7 @@ requirements:
     - jupyterlab >=3.0,<4
     - setuptools >=40.8.0
     - wheel
-    - pip
+    - pip =23.0.1
     - python >=3.6
   run:
     - aiohttp
