@@ -1,4 +1,4 @@
-{% set version = "4.1.2" %}
+{% set version = "4.2.0" %}
 
 package:
   name: jupyter-server-proxy
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter_server_proxy-{{ version }}.tar.gz
-  sha256: 6fd8ce88a0100e637b48f1d3aa32f09672bcb2813dc057d70567f0a40b1237f5
+  sha256: e4397eed637279a16ca7ab7c87bf276dc4422545f2d1aff9a0d10e5ebc7f012b
 
 build:
   number: 0
@@ -22,13 +22,13 @@ requirements:
     - python >=3.8
   run:
     - aiohttp
-    # importlib_metadata is only really needed with Python <3.10, but we've
-    # failed to specify it to only be required then
-    - importlib_metadata >=4.8.3
-    - jupyter_server >=1.0
-    - simpervisor >=1.0
-    - tornado >=5.1
-    - traitlets >=4.2.1
+    # importlib_metadata is only really needed with Python <3.10, but this is a noarch package
+    # so we can't use selectors
+    - importlib-metadata >=4.8.3
+    - jupyter_server >=1.24.0
+    - simpervisor >=1.0.0
+    - tornado >=6.1.0
+    - traitlets >=5.1.1
     - python >=3.8
 
 test:
@@ -76,3 +76,4 @@ extra:
     - xhochy
     - consideratio
     - bollwyvl
+    - manics

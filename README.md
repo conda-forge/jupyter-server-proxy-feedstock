@@ -156,6 +156,7 @@ Feedstock Maintainers
 * [@consideratio](https://github.com/consideratio/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@lsetiawan](https://github.com/lsetiawan/)
+* [@manics](https://github.com/manics/)
 * [@minrk](https://github.com/minrk/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@xhochy](https://github.com/xhochy/)
