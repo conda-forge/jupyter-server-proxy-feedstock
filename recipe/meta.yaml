@@ -24,10 +24,10 @@ requirements:
     - aiohttp
     # importlib_metadata is only really needed with Python <3.10, but this is a noarch package
     # so we can't use selectors
-    - importlib_metadata >=4.8.3
-    - jupyter_server >=1.24
-    - simpervisor >=1.0
-    - tornado >=6.1
+    - importlib-metadata >=4.8.3
+    - jupyter_server >=1.24.0
+    - simpervisor >=1.0.0
+    - tornado >=6.1.0
     - traitlets >=5.1.1
     - python >=3.8
 
@@ -76,3 +76,4 @@ extra:
     - xhochy
     - consideratio
     - bollwyvl
+    - manics
