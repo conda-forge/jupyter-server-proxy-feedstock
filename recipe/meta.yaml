@@ -69,6 +69,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - manics
     - jakirkham
     - lsetiawan
     - minrk
