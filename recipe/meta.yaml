@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/j/jupyter-server-proxy/jupyter_server_proxy-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/j/jupyter-server-proxy/jupyter_server_proxy-{{ version }}.tar.gz
   sha256: e5732eb9c810c0caa997f90a2f15f7d09af638e7eea9c67eb5c43e9c1f0e1157
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install -vv . --no-deps --no-build-isolation
 
@@ -19,7 +19,7 @@ requirements:
     - hatchling >=1.18.0
     - jupyterlab >=4.0.6,<5.0.0a0
     - pip
-    - python >=3.8
+    - python {{ python_min }}
   run:
     - aiohttp
     # importlib_metadata is only really needed with Python <3.10, but this is a noarch package
@@ -29,13 +29,14 @@ requirements:
     - simpervisor >=1.0.0
     - tornado >=6.1.0
     - traitlets >=5.1.1
-    - python >=3.8
+    - python >={{ python_min }}
 
 test:
   requires:
     - jupyterlab >=4.0.6,<5.0.0a0
     - m2-grep  # [win]
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     # print everything
