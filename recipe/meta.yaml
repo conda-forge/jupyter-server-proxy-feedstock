@@ -39,6 +39,8 @@ test:
     - m2-grep  # [win]
     - pip
     - python {{ python_min }}
+    # For jupyter-standaloneproxy only
+    - jupyterhub-base
   commands:
     - pip check
     # print everything
