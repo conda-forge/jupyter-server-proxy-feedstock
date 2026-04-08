@@ -9,9 +9,11 @@ source:
   sha256: 40835ed475fe30bea6e8f2e493fd8dfc700a7f37d86d6e97bc5298034521ac1c
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install -vv . --no-deps --no-build-isolation
+  entry_points:
+    - jupyter-standaloneproxy = jupyter_server_proxy.standalone:main
 
 requirements:
   host:
@@ -51,6 +53,7 @@ test:
     - grep -iE "jupyter_server_proxy\s*{{ version.replace(".", "\\.") }}"                 pip_list
     - grep -iE "jupyter_server_proxy.*OK"                                                 server_extensions
     - grep -iE "@jupyterhub/jupyter-server-proxy.*{{ version.replace(".", "\\.") }}.*OK"  labextensions
+    - jupyter-standaloneproxy --help
   imports:
     - jupyter_server_proxy
 
