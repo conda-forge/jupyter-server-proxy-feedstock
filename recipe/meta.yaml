@@ -55,11 +55,8 @@ test:
     - grep -iE "jupyter_server_proxy\s*{{ version.replace(".", "\\.") }}"                 pip_list
     - grep -iE "jupyter_server_proxy.*OK"                                                 server_extensions
     - grep -iE "@jupyterhub/jupyter-server-proxy.*{{ version.replace(".", "\\.") }}.*OK"  labextensions
-    - jupyter-standaloneproxy --help | grep 'Usage: jupyter standaloneproxy'
-    - >
-      jupyter-standaloneproxy --no-authentication --port=12345 -- python -mhttp.server '{port}' &
-      sleep 1;
-      curl http://localhost:12345 | grep '<title>Directory listing for /</title>'
+    - "jupyter-standaloneproxy --help | grep 'Usage: jupyter standaloneproxy'"
+    - "jupyter-standaloneproxy --no-authentication --port=12345 -- python -mhttp.server '{port}' & sleep 1; curl http://localhost:12345 | grep '<title>Directory listing for /</title>'"
   imports:
     - jupyter_server_proxy
 
