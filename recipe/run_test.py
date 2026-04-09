@@ -1,4 +1,6 @@
+from __future__ import annotations
 import os
+import sys
 from subprocess import run, PIPE, STDOUT, Popen
 import pytest
 import socket
@@ -10,8 +12,7 @@ if TYPE_CHECKING:
     from collections.abc import Iterator
 
 
-PKG_VERSION = os.environ["PKG_VERSION"]
-RE_VERSION = re.escape(PKG_VERSION)
+RE_VERSION = re.escape(os.environ["PKG_VERSION"])
 
 SCRIPTS = {
     rf"jupyter_server_proxy\s*{RE_VERSION}": ["pip", "list"],
@@ -44,19 +45,21 @@ def a_proxied_server(an_unused_port: int) -> Iterator[Popen]:
         "--no-authentication",
         f"--port={an_unused_port}",
         "--",
-        "python",
-        "-mhttp.server",
+        sys.executable,
+        "-m",
+        "http.server",
         "{port}",
     ]
     proc = Popen(args)
     yield proc
     proc.terminate()
+    proc.wait()
 
 
 @pytest.fixture
 def an_unused_port() -> int:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind(("localhost", 0))
+    sock.bind(("127.0.0.1", 0))
     sock.listen(1)
     port = sock.getsockname()[1]
     sock.close()

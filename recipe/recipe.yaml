@@ -5,7 +5,7 @@ context:
   version: "4.5.0"
   jupyterlab_min: "4.0.6"
   jupyterlab_max: "5.0.0a0"
-  python_check_max: "3.14s"
+  python_check_max: "3.14"
 
 package:
   name: jupyter-server-proxy
@@ -18,7 +18,7 @@ source:
 build:
   number: 1
   noarch: python
-  script: ${{ PYTHON }} -m pip install -vv . --no-deps --no-build-isolation
+  script: ${{ PYTHON }} -m pip install -vv . --no-deps --no-build-isolation --disable-pip-version-check
   python:
     entry_points:
       - jupyter-standaloneproxy = jupyter_server_proxy.standalone:main
@@ -50,6 +50,7 @@ tests:
         - jupyterhub-base
         - jupyterlab ${{ jupyterlab_min }}.*
         - pip
+        - pytest
         - python ${{ python_min }}.*
     script:
       file: run_test.py
