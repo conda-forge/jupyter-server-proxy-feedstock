@@ -1,12 +1,16 @@
 from __future__ import annotations
+
 import os
-import sys
-from subprocess import run, PIPE, STDOUT, Popen
-import pytest
-import socket
-from urllib.request import urlopen
 import re
+import socket
+import sys
+import time
+
+from subprocess import run, PIPE, STDOUT, Popen
 from typing import TYPE_CHECKING
+from urllib.request import urlopen
+
+import pytest
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
@@ -51,6 +55,7 @@ def a_proxied_server(an_unused_port: int) -> Iterator[Popen]:
         "{port}",
     ]
     proc = Popen(args)
+    time.sleep(1)
     yield proc
     proc.terminate()
     proc.wait()
@@ -64,3 +69,7 @@ def an_unused_port() -> int:
     port = sock.getsockname()[1]
     sock.close()
     return port
+
+
+if __name__ == "__main__":
+    sys.exit(pytest.main(["-vv", "--tb=long", "--color=yes", __file__]))
