@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "4.6.0"
+  version: "4.6.1"
   jupyterlab_min: "4.0.6"
   jupyterlab_max: "5.0.0a0"
   python_check_max: "3.14"
@@ -13,7 +13,7 @@ package:
 
 source:
   url: https://files.pythonhosted.org/packages/source/j/jupyter-server-proxy/jupyter_server_proxy-${{ version }}.tar.gz
-  sha256: b3f8fdb4c6b59fdb41f0d5342f002719eaad5f375e87fa659e21fe69d35ee6c1
+  sha256: 29bb49d932908f32fd39304ad60d28c1c328b812b427fb65282fec3c400a3487
 
 build:
   number: 0
